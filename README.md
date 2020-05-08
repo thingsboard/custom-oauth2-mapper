@@ -1,5 +1,6 @@
-# custom-oauth2-mapper
-This project provides a sample of custom mapper of OAuth 2.0 external user into ThingsBoard internal user object.
+# ThingsBoard Custom OAuth 2.0 mapper
+
+This project provides a sample of custom mapper of OAuth 2.0 external user info into ThingsBoard internal user object.
 
 You can use this application as a base implementation for the Custom Mapper endpoint.
 As well, you can copy any snippet of this implementation into already existent your microservices.
