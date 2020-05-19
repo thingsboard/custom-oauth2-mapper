@@ -1,3 +1,18 @@
+/**
+ * Copyright © ${project.inceptionYear}-2018 The Thingsboard Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.thingsboard.mapper.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -31,26 +46,28 @@ public class CustomOAuth2MapperController {
             throw new RuntimeException("Can't parse external user object", e);
         }
         OAuth2User result = new OAuth2User();
-        // Any attribute from the external user info object can be used as tenant name
-        String tenantName = externalUserInJson.get("domain").asText();
-        result.setTenantName("Tenant " + tenantName);
-
-        // You can set directly Tenant ID instead of the Tenant Name
-        // result.setTenantId(new TenantId(UUID.fromString("bc89e8f0-8ba9-11ea-97a9-0bc52285619a")));
 
         String email = externalUserInJson.get("email").asText();
         result.setEmail(email);
 
-        String firstName = externalUserInJson.get("given_name").asText();
+        String domain = email .substring(email .indexOf("@") + 1);
+
+        // Any attribute from the external user info object can be used as tenant name
+        result.setTenantName("Tenant " + domain);
+
+        // You can set directly Tenant ID instead of the Tenant Name
+        // result.setTenantId(new TenantId(UUID.fromString("bc89e8f0-8ba9-11ea-97a9-0bc52285619a")));
+
+        String firstName = externalUserInJson.get("givenName").asText();
         result.setFirstName(firstName);
 
-        String lastName = externalUserInJson.get("family_name").asText();
+        String lastName = externalUserInJson.get("familyName").asText();
         result.setLastName(lastName);
 
 
 //        // If required, you can set Customer Name, and user is going to be created on the Customer level
 //        String customerName = externalUserInJson.get("CUSTOMER_NAME_ATTRIBUTE").asText();
-//        result.setCustomerName(customerName);
+        result.setCustomerName(email);
 
 
 //        // You can set directly Customer ID instead of the Customer Name
