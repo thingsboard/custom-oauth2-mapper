@@ -67,7 +67,7 @@ public class CustomOAuth2MapperController {
 
 //        // If required, you can set Customer Name, and user is going to be created on the Customer level
 //        String customerName = externalUserInJson.get("CUSTOMER_NAME_ATTRIBUTE").asText();
-        result.setCustomerName(email);
+//        result.setCustomerName(email);
 
 
 //        // You can set directly Customer ID instead of the Customer Name
