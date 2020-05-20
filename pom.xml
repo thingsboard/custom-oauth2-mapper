@@ -487,7 +487,7 @@
                         <artifactId>dockerfile-maven-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>push-latest-docker-tb-performance-test-image</id>
+                                <id>push-latest-docker-oauth2-mapper-image</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>push</goal>
@@ -498,7 +498,7 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>push-version-docker-tb-performance-test-image</id>
+                                <id>push-version-docker-oauth2-mapper-image</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>push</goal>
