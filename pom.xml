@@ -42,7 +42,7 @@
         <winsw.version>1.9</winsw.version>
         <oauth2-mapper.docker.name>oauth2-mapper</oauth2-mapper.docker.name>
         <dockerfile.skip>true</dockerfile.skip>
-        <docker.repo>vzikratyi</docker.repo>
+        <docker.repo>thingsboard</docker.repo>
     </properties>
 
     <dependencies>
