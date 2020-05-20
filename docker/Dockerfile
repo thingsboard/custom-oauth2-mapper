@@ -33,4 +33,10 @@ ENV SERVER_PORT=10010
 ENV CUSTOM_MAPPER_USERNAME=admin
 ENV CUSTOM_MAPPER_PASSWORD="{noop}password"
 
+RUN chown -R ${pkg.user}:${pkg.user} /tmp
+
+RUN chmod 555 ${pkg.installFolder}/bin/${pkg.name}.jar
+
+USER ${pkg.user}
+
 CMD ["start-oauth2-mapper.sh"]
