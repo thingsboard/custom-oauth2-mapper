@@ -27,15 +27,8 @@
     <packaging>jar</packaging>
 
     <name>Custom OAuth 2.0 Mapper</name>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.5.RELEASE</version>
-        <relativePath/>
-    </parent>
-
     <properties>
+        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -47,23 +40,26 @@
         <pkg.unixLogFolder>/var/log/${pkg.name}</pkg.unixLogFolder>
         <pkg.win.dist>${project.build.directory}/windows</pkg.win.dist>
         <winsw.version>1.9</winsw.version>
-        <docker.repo>vzikratyi</docker.repo>
         <oauth2-mapper.docker.name>oauth2-mapper</oauth2-mapper.docker.name>
         <dockerfile.skip>true</dockerfile.skip>
+        <docker.repo>vzikratyi</docker.repo>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -74,6 +70,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-core</artifactId>
+            <version>5.3.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ant</groupId>
@@ -358,31 +355,6 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>copy-tb-deb</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>copy</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <artifactItems>-->
-<!--                                <artifactItem>-->
-<!--                                    <groupId>org.thingsboard</groupId>-->
-<!--                                    <artifactId>application</artifactId>-->
-<!--                                    <classifier>deb</classifier>-->
-<!--                                    <type>deb</type>-->
-<!--                                    <destFileName>${pkg.name}.deb</destFileName>-->
-<!--                                    <outputDirectory>${project.build.directory}/docker-tb</outputDirectory>-->
-<!--                                </artifactItem>-->
-<!--                            </artifactItems>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
