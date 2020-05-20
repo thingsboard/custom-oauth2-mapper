@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © ${project.inceptionYear}-2018 The Thingsboard Authors
+    Copyright © 2016-2018 The Thingsboard Authors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -27,6 +27,9 @@
     <packaging>jar</packaging>
 
     <name>Custom OAuth 2.0 Mapper</name>
+    <url>http://thingsboard.org</url>
+    <inceptionYear>2016</inceptionYear>
+
     <properties>
         <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
