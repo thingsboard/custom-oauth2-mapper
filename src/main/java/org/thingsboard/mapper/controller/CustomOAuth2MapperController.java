@@ -47,6 +47,9 @@ public class CustomOAuth2MapperController {
         }
         OAuth2User result = new OAuth2User();
 
+        // In case of PE please use PEOAuth2User
+        // PEOAuth2User result = new PEOAuth2User();
+
         String email = externalUserInJson.get("email").asText();
         result.setEmail(email);
 
