@@ -17,7 +17,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 buildscript {
     ext {
-        osPackageVersion = "3.8.0"
+        osPackageVersion = "8.3.0"
     }
     repositories {
         jcenter()
@@ -74,7 +74,8 @@ buildRpm {
     version = projectVersion.replace('-', '')
     archiveName = "${pkgName}.rpm"
 
-    requires("java-1.8.0")
+    requires("java-11")
+    requires("newt")
 
     from("target/conf") {
         include "${pkgName}.conf"
@@ -111,7 +112,9 @@ buildDeb {
 
     archiveName = "${pkgName}.deb"
 
-    requires("openjdk-8-jre").or("java8-runtime").or("oracle-java8-installer").or("openjdk-8-jre-headless")
+    preDepends("debconf", "0.5", GREATER | EQUAL).or("debconf-2.0")
+
+    requires("openjdk-11-jre").or("java11-runtime").or("oracle-java11-installer").or("openjdk-11-jre-headless")
 
     from("target/conf") {
         include "${pkgName}.conf"
@@ -137,4 +140,24 @@ buildDeb {
     link("/etc/init.d/${pkgName}", "${pkgInstallFolder}/bin/${pkgName}.jar")
     link("${pkgInstallFolder}/bin/${pkgName}.yml", "${pkgInstallFolder}/conf/${pkgName}.yml")
     link("/etc/${pkgName}/conf", "${pkgInstallFolder}/conf")
+}
+
+task renameDeb(type: Copy) {
+    from("${buildDir}/") {
+        include '*.deb'
+        destinationDir file("${buildDir}/")
+        rename { String filename ->
+            "${pkgName}.deb"
+        }
+    }
+}
+
+task renameRpm(type: Copy) {
+    from("${buildDir}/") {
+        include '*.rpm'
+        destinationDir file("${buildDir}/")
+        rename { String filename ->
+            "${pkgName}.rpm"
+        }
+    }
 }
