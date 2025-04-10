@@ -13,7 +13,9 @@ You can combine this Custom Mapper with [ThingsBoard REST API Client](https://th
 
 ## Build
 
+```bash
 mvn license:format clean install -Ddockerfile.skip=false
+```
 
 ## Running
 
