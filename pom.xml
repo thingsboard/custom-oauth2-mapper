@@ -35,7 +35,7 @@
         <spring-security.version>6.2.7</spring-security.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <thingsboard.version>3.9.1PE</thingsboard.version>
+        <thingsboard.version>3.9.1</thingsboard.version>
         <lombok.version>1.18.32</lombok.version>
         <pkg.name>oauth2-mapper</pkg.name>
         <pkg.user>thingsboard</pkg.user>
