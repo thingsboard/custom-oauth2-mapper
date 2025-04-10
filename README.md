@@ -11,6 +11,10 @@ You can combine this Custom Mapper with [ThingsBoard REST API Client](https://th
 
 - [Install Docker CE](https://docs.docker.com/engine/installation/)
 
+## Build
+
+mvn license:format clean install -Ddockerfile.skip=false
+
 ## Running
 
 To run test against ThingsBoard first create plain text file to set up test configuration (in our example configuration file name is *.env*):

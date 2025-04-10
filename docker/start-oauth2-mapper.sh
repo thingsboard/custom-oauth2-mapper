@@ -25,4 +25,4 @@ echo "Starting Custom OAuth2 Mapper..."
 
 java -cp ${jarfile} $JAVA_OPTS -Dloader.main=org.thingsboard.mapper.ThingsboardCustomMapperDemoApplication \
                     -Dlogging.config=${CONF_FOLDER}/logback.xml \
-                    org.springframework.boot.loader.PropertiesLauncher
+                    org.springframework.boot.loader.launch.PropertiesLauncher

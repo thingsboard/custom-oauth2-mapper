@@ -1,6 +1,6 @@
 <!--
 
-    Copyright © 2016-2018 The Thingsboard Authors
+    Copyright © 2016-2018 ThingsBoard, Inc.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -34,23 +34,22 @@
             </excludes>
         </fileSet>
         <fileSet>
-            <directory>${pkg.win.dist}/conf</directory>
-            <outputDirectory>conf</outputDirectory>
+            <directory>${pkg.win.dist}/install</directory>
+            <outputDirectory>install</outputDirectory>
             <lineEnding>windows</lineEnding>
-            <excludes>
-                <exclude>*.der</exclude>
-                <exclude>*.cer</exclude>
-                <exclude>*.pfx</exclude>
-            </excludes>
         </fileSet>
         <fileSet>
             <directory>${pkg.win.dist}/conf</directory>
             <outputDirectory>conf</outputDirectory>
-            <includes>
-                <include>*.der</include>
-                <include>*.cer</include>
-                <include>*.pfx</include>
-            </includes>
+            <lineEnding>windows</lineEnding>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/extensions</directory>
+            <outputDirectory>extensions</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/data</directory>
+            <outputDirectory>data</outputDirectory>
         </fileSet>
     </fileSets>
 

@@ -14,29 +14,28 @@
 # limitations under the License.
 #
 
-FROM thingsboard/openjdk11:bullseye-slim
+FROM thingsboard/openjdk17:bookworm-slim
 
 COPY start-oauth2-mapper.sh ${pkg.name}.conf ${pkg.name}.deb /tmp/
 
-RUN echo 'networkaddress.cache.ttl=60' >> /etc/java-11-openjdk/security/java.security \
-    && chmod a+x /tmp/*.sh \
-    && mv /tmp/start-oauth2-mapper.sh /usr/bin && \
-    (yes | dpkg -i /tmp/${pkg.name}.deb) && \
-    rm /tmp/${pkg.name}.deb && \
-    (systemctl --no-reload disable --now ${pkg.name}.service > /dev/null 2>&1 || :) && \
-    mv /tmp/${pkg.name}.conf ${pkg.installFolder}/conf && \
-    chown -R ${pkg.user}:${pkg.user} /tmp && \
-    chmod 555 ${pkg.installFolder}/bin/${pkg.name}.jar
+RUN chmod a+x /tmp/*.sh \
+    && mv /tmp/start-oauth2-mapper.sh /usr/bin
+
+RUN dpkg -i /tmp/${pkg.name}.deb
+
+RUN systemctl --no-reload disable --now ${pkg.name}.service > /dev/null 2>&1 || :
+
+RUN mv /tmp/${pkg.name}.conf ${pkg.installFolder}/conf
 
 ENV OAUTH2_MAPPER_DOCKER_NAME=oauth2-mapper
 
 ENV SERVER_PORT=10010
-ENV CUSTOM_MAPPER_USERNAME=admin
-ENV CUSTOM_MAPPER_PASSWORD="{noop}password"
+ENV CUSTOM_MAPPER_AUTH_ENABLED=true
+ENV CUSTOM_MAPPER_AUTH_USERNAME=admin
+ENV CUSTOM_MAPPER_AUTH_PASSWORD="{noop}password"
+
+RUN chmod 555 ${pkg.installFolder}/bin/${pkg.name}.jar
 
 USER ${pkg.user}
 
 CMD ["start-oauth2-mapper.sh"]
-
-
-
